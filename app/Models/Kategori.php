@@ -9,7 +9,7 @@ class Kategori extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
         'nama_kategori',
         'deskripsi'
     ];

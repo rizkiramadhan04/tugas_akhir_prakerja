@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.content.home');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('post', PostController::class);
+Route::resource('produk', ProdukController::class)->middleware(['auth', 'admin']);
+Route::resource('kategori', KategoriController::class)->middleware(['auth', 'admin']);
